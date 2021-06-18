@@ -1,7 +1,7 @@
-const User = require("../../../model/user");
-const jwt = require('jsonwebtoken');
+const User = require("../model/user");
+const jwt = require("jsonwebtoken");
 
-
+// test controller 
 module.exports.home = function (req, res) {
   return res.json(200, {
     message: "Hello from API's",
@@ -9,9 +9,7 @@ module.exports.home = function (req, res) {
   });
 };
 
-
-
-// User Creation Controller
+// User sing-up Controller
 module.exports.create = async function (req, res) {
   if (!req.body.name || !req.body.email || !req.body.password) {
     return res.status(400).send({
@@ -44,10 +42,12 @@ module.exports.create = async function (req, res) {
   }
 };
 
+
+// Sign in user
 module.exports.createSession = async (req, res) => {
   const { email, password } = req.body;
   const secret_key = "asdfg";
-  
+
   try {
     let user = await User.findOne({ email });
 
@@ -66,7 +66,7 @@ module.exports.createSession = async (req, res) => {
   } catch (err) {
     console.log("Error", err);
     return res.status(500).json({
-        Message:  "Internal Server Error",
+      Message: "Internal Server Error",
     });
   }
 };

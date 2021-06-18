@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost/blog_api", {
-  useNewUrlParser: true,
+  useCreateIndex: true,
   useUnifiedTopology: true,
-  createIndexes: true
+  useNewUrlParser: true,
 });
 
 const db = mongoose.connection;

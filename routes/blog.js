@@ -27,5 +27,12 @@ router.put(
   blogCntrlr.update
 );
 
+router.delete(
+  "/delete/:id",
+  passport.authenticate("jwt", { session: false }),
+  blogCntrlr.delete
+);
+
+
 
 module.exports = router;

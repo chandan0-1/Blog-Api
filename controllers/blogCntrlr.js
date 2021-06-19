@@ -108,18 +108,45 @@ module.exports.update = async function(req, res){
       title: req.body.title,
       content : req.body.content
     }, {new:true})
+
+    // if not found then
+    if (!blog) {
+      return res.status(404).json({
+        message: "Cannot found the blog with Specified ID",
+      });
+    }
     // passing {new: true} so that can send updated blog
     return res.send(blog)
-}catch(err){
-  // if blog not found with id 
-  if (err.kind == "ObjectId" ){
-    return res.status(404).json({
-      message: "Cannot found the post with Specified ID"
-    })
-  }
 
+}catch(err){
   return res.status(501).json({
-    message: "Internal Server Error !!",
+    message: "Internal Server Error !!"
   }); 
 }}
+
+
+
+//--------------- Deleting a Single Blog using his ID-------------------------//
+module.exports.delete = async function (req, res) {
+  try {
+    // if found then update
+    let blog = await Blog.findByIdAndDelete(req.params.id);
+    
+    if (!blog){
+      return res.status(404).json({
+        message: "Cannot found the blog with Specified ID",
+      });
+    }
+
+    // if found and Deleted
+    return res.status(200).json({
+      message: "Blog Deleted Successfully",
+    });
+
+  } catch (err) {
+    return res.status(501).json({
+      message: "Internal Server Error !!",
+    });
+  }
+};
 

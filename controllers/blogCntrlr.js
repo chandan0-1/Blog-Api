@@ -140,20 +140,19 @@ module.exports.update = async function(req, res){
 //--------------- Deleting a Single Blog using his ID-------------------------//
 module.exports.delete = async function (req, res) {
 
-
   try {
     let blog1 = await Blog.findById(req.params.id);
 
     if (req.user.id != blog1.author) {
       return res.status(401).json({
-        message: "Unauthorized to delete the blog, you can delete the blog created by you !!"
+        message: "Unauthorized to delete the blog, you can only delete the blog which is created by you !!"
       })
     }
 
     // if found then update
     let blog = await Blog.findByIdAndDelete(req.params.id);
 
-    if (!blog) {
+    if (!blog || !blog1) {
       return res.status(404).json({
         message: "Cannot found the blog with Specified ID",
       });
@@ -165,7 +164,7 @@ module.exports.delete = async function (req, res) {
     });
   } catch (err) {
     return res.status(501).json({
-      message: "Internal Server Error !!",
+      message: err || "Internal Server Error !!",
     });
   }
 };

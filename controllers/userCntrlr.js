@@ -43,7 +43,7 @@ module.exports.create = async function (req, res) {
 };
 
 
-// Sign in user
+// ----------Sign in user
 module.exports.createSession = async (req, res) => {
 
     if (!req.body.email || !req.body.password) {

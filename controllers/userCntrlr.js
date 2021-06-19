@@ -46,7 +46,7 @@ module.exports.create = async function (req, res) {
 // Sign in user
 module.exports.createSession = async (req, res) => {
   const { email, password } = req.body;
-  const secret_key = "asdfg";
+  const secret_key = "blogapitest";
 
   try {
     let user = await User.findOne({ email });
@@ -60,7 +60,7 @@ module.exports.createSession = async (req, res) => {
     if (user.password == password) {
       return res.status(200).json({
         Message: "Login Successfully!!",
-        token: jwt.sign(user.toJSON(), secret_key, { expiresIn: 1000000 }),
+        token: jwt.sign(user.toJSON(), secret_key, { expiresIn: 10 }),
       });
     }
   } catch (err) {

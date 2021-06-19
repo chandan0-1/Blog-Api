@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("./config/passport-jwt");
 
-
 const path = require("path");
 
 // Creating the app instance

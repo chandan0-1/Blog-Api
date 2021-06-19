@@ -103,36 +103,57 @@ module.exports.update = async function(req, res){
   }
 
   try{
+    let blog1 = await Blog.findById(req.params.id);
+
+    // if not found then
+    if (!blog1) {
+      return res.status(404).json({
+        message: "Cannot found the blog with Specified ID",
+      });
+    }
+
+    // if both author is not same then updation can not be done 
+    if (req.user.id != blog1.author) {
+      return res.status(401).json({
+        message:
+          "Unauthorized to update the blog, you can update only if the blog is created by you !!",
+      });
+    }
     // if found then update
     let blog = await Blog.findByIdAndUpdate(req.params.id, {
       title: req.body.title,
       content : req.body.content
     }, {new:true})
 
-    // if not found then
-    if (!blog) {
-      return res.status(404).json({
-        message: "Cannot found the blog with Specified ID",
-      });
-    }
     // passing {new: true} so that can send updated blog
     return res.send(blog)
 
 }catch(err){
   return res.status(501).json({
-    message: "Internal Server Error !!"
+    message: err || "Internal Server Error !!"
   }); 
 }}
 
 
 
+
 //--------------- Deleting a Single Blog using his ID-------------------------//
 module.exports.delete = async function (req, res) {
+
+
   try {
+    let blog1 = await Blog.findById(req.params.id);
+
+    if (req.user.id != blog1.author) {
+      return res.status(401).json({
+        message: "Unauthorized to delete the blog, you can delete the blog created by you !!"
+      })
+    }
+
     // if found then update
     let blog = await Blog.findByIdAndDelete(req.params.id);
-    
-    if (!blog){
+
+    if (!blog) {
       return res.status(404).json({
         message: "Cannot found the blog with Specified ID",
       });
@@ -142,11 +163,46 @@ module.exports.delete = async function (req, res) {
     return res.status(200).json({
       message: "Blog Deleted Successfully",
     });
-
   } catch (err) {
     return res.status(501).json({
       message: "Internal Server Error !!",
     });
   }
 };
+
+
+// ------------------------Getting the list of the post with title and author name only----------------------------
+module.exports.getbyTitle = async (req, res) => {
+
+  // Checking if request is validuser
+  if (!req.params.title){
+    return res.status(400).json({
+      message : "Blog Title and Content can not Empty!!"
+    })
+  }
+
+  try{
+    let blog = await Blog.find({title : req.params.title}).populate("author");
+
+    if (!blog){
+      return res.status(404).json({
+        message: "Cannot found any blog with Specified title"
+      })
+    }
+    // console.log(req.body.user == blog.author)
+    var arr = [];
+    for (i of blog) {
+      arr.push({
+        title: i.title,
+        author: i.author.name,
+        content: i.content
+      });
+    }
+    return res.status(200).send(arr);
+  }catch(err){
+    return res.status(501).json({
+      message: err || "Internal Server Error !!",
+    });
+  }
+}
 

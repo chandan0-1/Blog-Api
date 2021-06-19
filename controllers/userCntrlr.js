@@ -24,7 +24,7 @@ module.exports.create = async function (req, res) {
     // if user not present in the dataBase then creatiing one
     if (!user) {
       User.create(req.body, function (user) {
-        console.log("User", req.body);
+        // console.log("User", req.body);
         return res.status(200).send({
           message: "User created Successfully!!",
         });
@@ -45,6 +45,12 @@ module.exports.create = async function (req, res) {
 
 // Sign in user
 module.exports.createSession = async (req, res) => {
+
+    if (!req.body.email || !req.body.password) {
+      return res.status(400).json({
+        message: "Please fill all the required fields !!",
+      });
+    }
   const { email, password } = req.body;
   const secret_key = "blogapitest";
 
@@ -60,7 +66,7 @@ module.exports.createSession = async (req, res) => {
     if (user.password == password) {
       return res.status(200).json({
         Message: "Login Successfully!!",
-        token: jwt.sign(user.toJSON(), secret_key, { expiresIn: 10 }),
+        token: jwt.sign(user.toJSON(), secret_key, { expiresIn: 10000 }),
       });
     }
   } catch (err) {

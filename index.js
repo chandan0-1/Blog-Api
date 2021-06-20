@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 8001;
+const port = process.env.PORT || 8001;
 const bodyParser = require("body-parser");
 const jwt = require('jsonwebtoken');
 

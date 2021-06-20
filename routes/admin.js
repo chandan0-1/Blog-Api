@@ -4,9 +4,10 @@ const passport = require("passport");
 
 const adminCntrlr = require("../controllers/adminCntrlr");
 
-// Controller for Admin
+// Routes for Admin
 router.post("/login",adminCntrlr.login)
 router.post("/create", adminCntrlr.create);
 router.delete("/deleteOne/:id",adminCntrlr.deleteOne);
+
 
 module.exports = router;

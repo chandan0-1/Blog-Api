@@ -2,7 +2,7 @@ let Admin = require("../model/admin");
 let Blog = require("../model/blog");
 const jwt = require("jsonwebtoken");
 
-//----------------- Creating a admin user
+//----------------- Creating a admin user--------
 module.exports.create = async (req, res) => {
   const { email, password } = req.body;
   const admin = await Admin.findOne({ email });
@@ -20,7 +20,7 @@ module.exports.create = async (req, res) => {
 
 
 
-// ----------creating session / doing login as Admin
+// ----------creating session / doing login as Admin---------
 module.exports.login = async (req, res) => {
   const { email, password } = req.body;
 

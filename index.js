@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 
 // distributing the routes
-app.use('/',require('./routes'))
+app.use('/',require('./routes/api.js'))
 
 
 

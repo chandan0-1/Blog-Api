@@ -11,7 +11,7 @@ const adminSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      default: "Admin4",
+      default: "Admin",
     },
     password: {
       type: String,

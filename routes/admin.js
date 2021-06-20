@@ -7,7 +7,8 @@ const adminCntrlr = require("../controllers/adminCntrlr");
 // Routes for Admin
 router.post("/login",adminCntrlr.login)
 router.post("/create", adminCntrlr.create);
-router.delete("/deleteOne/:id",adminCntrlr.deleteOne);
+router.delete("/delete/:id",adminCntrlr.deleteOne
+);
 
 
 module.exports = router;

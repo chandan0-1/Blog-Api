@@ -26,7 +26,9 @@ app.use(bodyParser.json());
 // distributing the routes
 app.use('/',require('./routes/api.js'))
 
-
+app.get("/", function(req,res){
+    return res.send("<h1> API is Ready, Please use Postman to test it !! </h1>");
+});
 
 app.listen(port, function(err){
   console.log(`Server is Running on the port no: ${port}`)

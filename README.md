@@ -2,7 +2,9 @@
 A Simple Blog API  where user can create, delete and modify the blog. Also inbuilt with admin module feature, where admin can control the flow of all operatons with SuperUser permission.
 
 <h4> Deployed Url: https://blogapi-test.herokuapp.com/ {api end points will be added here to test} </h4> 
-Please use Postman to test the api.
+
+<h2> Note: <b>Please use Postman to test the api.</b> </h2>
+<b>__________________________________________________________________________________________________________</b>
 
 # Required Packages to run this API
    <h3>"dependencies":</h3>
@@ -17,6 +19,7 @@ Please use Postman to test the api.
       }
 
 <h5>Above listed packages should be greater than or equivalent to the mentioned Version.</h5>
+<b>__________________________________________________________________________________________________________</b>
 
 # API's Endpoints
 
@@ -24,6 +27,7 @@ Please use Postman to test the api.
 <b>"/api/admin/login"  </b>(POST)</br>
 <b>"/api/admin/create"  </b>(POST)</br>
 <b>"/api/admin/delete/:id" </b> (DELETE) 
+<b>__________________________________________________________________________________________________________</b>
 
 <h3> To use for Normal User </h3>
 <b>"/api/user/login" </b> (POST)</br>
@@ -41,6 +45,8 @@ example:- {</br>
     "password": "password"
 }
 
+<b>__________________________________________________________________________________________________________</b>
+
 <h3> Blog's Endpoint: </h3>
 
 <b>"/api/blog/showAll"</b>  (GET) // Note:to get all the blog with only title and author format </br> 
@@ -57,6 +63,8 @@ Example:- {
 
 <b>"/api/blog/update/:id" </b> (PUT)</br>
 <b>"/api/blog/delete/:id" </b> (DELETE)</br>
+
+<b>__________________________________________________________________________________________________________</b>
 
 <h3>Note: "/:id" and "/:title" should be passed mannually </h3> 
 

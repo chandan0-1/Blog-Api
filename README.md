@@ -4,7 +4,7 @@ A Simple Blog API  where user can create, delete and modify the blog. Also inbui
 <h4> Deployed Url: https://blogapi-test.herokuapp.com/ {api end points will be added here to test} </h4> 
 
 <h2> Note: <b>Please use Postman to test the api.</b> </h2>
-<b>__________________________________________________________________________________________________________</b>
+<b>_____________________________________________________________________________________</b>
 
 # Required Packages to run this API
    <h3>"dependencies":</h3>
@@ -19,7 +19,7 @@ A Simple Blog API  where user can create, delete and modify the blog. Also inbui
       }
 
 <h5>Above listed packages should be greater than or equivalent to the mentioned Version.</h5>
-<b>__________________________________________________________________________________________________________</b>
+<b>_____________________________________________________________________________________</b>
 
 # API's Endpoints
 
@@ -27,7 +27,7 @@ A Simple Blog API  where user can create, delete and modify the blog. Also inbui
 <b>"/api/admin/login"  </b>(POST)</br>
 <b>"/api/admin/create"  </b>(POST)</br>
 <b>"/api/admin/delete/:id" </b> (DELETE) 
-<b>__________________________________________________________________________________________________________</b>
+<b>_____________________________________________________________________________________</b>
 
 <h3> To use for Normal User </h3>
 <b>"/api/user/login" </b> (POST)</br>
@@ -45,7 +45,7 @@ example:- {</br>
     "password": "password"
 }
 
-<b>__________________________________________________________________________________________________________</b>
+<b>_____________________________________________________________________________________</b>
 
 <h3> Blog's Endpoint: </h3>
 
@@ -64,7 +64,7 @@ Example:- {
 <b>"/api/blog/update/:id" </b> (PUT)</br>
 <b>"/api/blog/delete/:id" </b> (DELETE)</br>
 
-<b>__________________________________________________________________________________________________________</b>
+<b>_____________________________________________________________________________________</b>
 
 <h3>Note: "/:id" and "/:title" should be passed mannually </h3> 
 
